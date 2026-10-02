@@ -183,7 +183,7 @@ _Look at the help pages for the `mean()` and `median()` commands to see what the
 ```{r Ex_j}
 visitors %>%
   summarise(
-    med_2021 = median(n_2021, na.rm = TRUE),
+    med_2021 = median(n_2021, na.rm= TRUE),
     mean_2021 = mean(n_2021, na.rm = TRUE)
     )
 ```
