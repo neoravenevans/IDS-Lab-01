@@ -82,16 +82,17 @@ head(top_10, n=10)
 _What is the admission charge for the `"National Museum of Scotland"`?_
 
 ```{r Q4}
-visitors %>% filter(attraction == "National Museum of Scotland")
+NMS <- filter(visitors, attraction == "National Museum of Scotland")
+pull(NMS, admission)
 ```
-
 
 ### Exercise d.
 
 _Which attraction had exactly 565,772 visitors in 2022?_
 
 ```{r Ex_d}
-#visitors %>% filter(___ == ____)
+exact <- filter(visitors, n_2022 == 565772)
+pull(exact, attraction)
 ```
 
 ### Exercise e.
@@ -99,9 +100,8 @@ _Which attraction had exactly 565,772 visitors in 2022?_
 _How many attraction had more than 1 million visitors in 2022?_
 
 ```{r Ex_e}
-#visitors %>% 
-#  filter(____) %>%
-#  count()
+mil <- filter(visitors, n_2022 > 1000000)
+count(mil)
 ```
 
 ## Question 5
