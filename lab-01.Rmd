@@ -109,14 +109,14 @@ count(mil)
 _How many `"O"`utside attractions are there in the `"Yorkshire and the Humber"` region that gives `"Members"` free admission, which had more than 100,000 visitors in 2022?_
 
 ```{r Q5}
-visitors %>%
-  filter(
-    setting == "O",
-    region == "Yorkshire and the Humber",
-    admission == "Members",
-    n_2022 >= 100000
-    ) %>%
-  count()
+
+spec <- filter(visitors,
+          setting=="O" &
+          region=="Yorkshire and the Humber" &
+          admission=="Members" &
+          n_2022>100000)
+count(spec)
+
 ```
 
 ### Exercise f.
@@ -124,11 +124,8 @@ visitors %>%
 _How many attractions had between 50,000 and 100,000 visitors in 2022?_
 
 ```{r Ex_f}
-#visitors %>% 
-#  ____(
-#    ______,
-#    ______ ) %>%
-#  count()
+limit <- filter(visitors, n_2022>50000 & n_2022<100000)
+count(limit)
 ```
 
 ### Exercise g.
@@ -136,9 +133,9 @@ _How many attractions had between 50,000 and 100,000 visitors in 2022?_
 _How many regions have more than 50 tourist attraction in the data set? (Hint: You will need to tabulate the data before filtering.)_
 
 ```{r Ex_g}
-#visitors %>% 
-#  _____(region) %>%
-#  filter(______)
+reg <- count(visitors, region)
+reg_1 <- filter(reg, n>50)
+count(reg_1)
 ```
 
 
