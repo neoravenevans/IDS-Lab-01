@@ -61,7 +61,6 @@ visitors %>% summarise_all(class)
 ```
 
 
-
 ## Question 3
 
 _Which attraction had the most number of visitors in 2022?_
@@ -74,9 +73,8 @@ visitors %>% arrange(desc(n_2022))
 
 _What are the top 10 most visited attractions in 2021?_
 ```{r Ex_c}
-#visitors %>% 
-#  arrange(____(____)) %>%
-#  head(n = ____)
+top_10 <- arrange(visitors, desc(n_2021))
+head(top_10, n=10)
 ```
 
 ## Question 4
