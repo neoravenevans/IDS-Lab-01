@@ -150,7 +150,7 @@ _What are the mean and median visitor numbers in 2022 across all attractions?_
 visitors %>% 
   summarise(
     mean_2022 = mean(n_2022),
-    med_2022 = median(n_2022)
+    med_2022 = median(n_2022),
   )
 ```
 
@@ -160,11 +160,11 @@ visitors %>%
 _Perform the same calculation for the 2021 admissions data._
 
 ```{r Ex_h}
-#visitors %>% 
-#  ______(
-#    __________,
-#    __________
-#  )
+visitors %>%
+  summarise(
+    med_2021 = median(n_2021),
+    mean_2021 = mean(n_2021)
+    )
 ```
 
 All values in the output are `NA`!
@@ -173,19 +173,20 @@ All values in the output are `NA`!
 
 _What does `NA` stand for and why are you getting this as your answer to the previous question._
 
-**Write your answer here**
-
-
-
+NA = not applicable
+Some of the values in column n_2021 are NA, therefore no summary data can be calculated while these are included.
 
 ### Exercise j.
 
 _Look at the help pages for the `mean()` and `median()` commands to see what the input argument `na.rm` does. Edit your code from exercise h so that it computes the summary statistics where data is available._
 
-**Write your answer here**
-
-
-
+```{r Ex_j}
+visitors %>%
+  summarise(
+    med_2021 = median(n_2021, na.rm = TRUE),
+    mean_2021 = mean(n_2021, na.rm = TRUE)
+    )
+```
 
 ## Question 7
 
