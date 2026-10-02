@@ -5,7 +5,6 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-
 ### Load packages and data
 
 ```{r load-packages, message=FALSE}
@@ -18,8 +17,6 @@ library(tidyverse)
 visitors <- read_csv("data/UK-visitor-numbers.csv")
 ```
 
-
-
 # Wrangling Data
 
 ## Question 1
@@ -27,7 +24,6 @@ visitors <- read_csv("data/UK-visitor-numbers.csv")
 _How many tourist attractions are there in the data set?_
 
 ```{r Q1}
-visitors %>% count()
 ```
 
 ### Exercise a.
@@ -35,9 +31,8 @@ visitors %>% count()
 _Create a frequency table of the number of tourist attractions in the data set by `region`._
 
 ```{r Ex_a}
-# Delete the comment '#' symbol at the start of the next line and complete the code. 
-
-#visitors %>% count(_____)
+region_freq <- count(visitors, region)
+arrange(region_freq, desc(n))
 ```
 
 ### Exercise b.
@@ -45,9 +40,11 @@ _Create a frequency table of the number of tourist attractions in the data set b
 _Create a frequency table by `admission` and `setting`._
 
 ```{r Ex_b}
-# Delete the comment '#' symbol at the start of the next line and complete the code.
+admission_freq <- count(visitors, admission)
+arrange(admission_freq, desc(n))
 
-#visitors %>% count(_____, _____)
+setting_freq <- count(visitors, setting)
+arrange(setting_freq, desc(n))
 ```
 
 
