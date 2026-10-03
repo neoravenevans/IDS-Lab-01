@@ -205,18 +205,18 @@ visitors %>%
 
 _Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
-**Write your answer here**
+There are certain attractions with very large visitor numbers which skew the mean, but there are very few of these so the median is still low.
 
 ## Question 8
 
 ### Exercise l.
 
 ```{r Q8}
-#visitors %>% 
-#  summarise(
-#     __________,
-#     __________,
-#  )
+visitors %>%
+  summarise(
+    maxi = max(n_2021, na.rm = TRUE),
+    mini = min(n_2021, na.rm = TRUE)
+  )
 ```
 
 ## Question 9
@@ -245,12 +245,23 @@ visitors_with_nations %>%
 
 _How many tourist attractions are there in each of the 4 nations? From this, discuss in your group how reliable you think the inter-quartile estimates are._
 
-
 ```{r Ex_l}
-#________ %>%
-#  ______(_______)
-```
 
+visitors_grouped <- visitors %>%
+  mutate(
+    nation = case_when(
+      region == "Northern Ireland" ~ "Northern Ireland",
+      region == "Wales" ~ "Wales",
+      region == "Scotland" ~ "Scotland",
+      TRUE ~ "England"
+    )
+  )
+
+group_by(visitors_grouped, nation) %>%
+  summarise(IQR_2022 = IQR(n_2022)) %>%
+  arrange(IQR_2022)
+
+```
 
 
 # Challenging Exercises
